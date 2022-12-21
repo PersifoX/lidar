@@ -118,6 +118,12 @@ class Tools:
         self.OptionalMap = OptionalMap
 
     def find_longest_zeros(self, map):
+        """
+            find_longest_zeros возвращает начало start и конец stop
+            самой длинной последовательности нулей внутри входной последовательности map
+
+            map - последовательность замеров с лидара, где 0 - не найденная стена, глубокая неизвестность
+        """
         leng = 0
         start = 0
         stop = 0

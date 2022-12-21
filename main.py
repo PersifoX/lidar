@@ -35,6 +35,9 @@ ev3.speaker.beep()
 #print(find_longest_zeros(lidar.scan()))
 
 def find_center_zeros_ang(map):
+    """
+    find_center_zeros_ang возвращает угол между крайними замерами c лидара самой длинной последовательности нулей 
+    """
     ang = 0
     start, stop = tools.find_longest_zeros(map)
     
