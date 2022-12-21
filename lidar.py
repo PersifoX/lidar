@@ -17,12 +17,12 @@ from pybricks.media.ev3dev import SoundFile, ImageFile
 ev3 = EV3Brick()
 
 UltraSonic = UltrasonicSensor(Port.S4)
-#Gyro       = GyroSensor(Port.S1)
-Motor      = Motor(Port.D)
+Infrared   = InfraredSensor(Port.S1)
+
 
 """
 Если вы собрали все правильно, лидар будет возвращать массив с 30-ю элементами типа int
-от 0 (лидар не видит препятствия) до 2249 (~22,5 см) 
+от 0 (лидар не видит препятствия) до 2249 (~225 см) 
 
 Основной класс имеет 2 необязательных параметра:
     -DualMode:
@@ -30,22 +30,27 @@ Motor      = Motor(Port.D)
         (По умолчанию лидар использует только Ультразвуковой)
     -Debug:
         Выводить ли элементы массива на экран ev3 (поочередно)
+    -Speed:
+        Скорость вращения лидара, чем меньше - тем лучше стабилизация. По умолчанию 30.
 """
+
 
 class Lidar:
 
     #read params
-    def __init__(self, DualMode:bool=None, Debug:bool=None):
+    def __init__(self, DualMode:bool=False, Debug:bool=False, Speed:int=30):
 
         self.DualMode = DualMode
         self.Debug    = Debug
+        self.Speed    = Speed
 
     #base function for get array of landscape
     def scan(self):
         while True:
 
             #array of map
-            map      = []
+            UltraMap    = []
+            InfraredMap = []
 
             #set null pos
             Motor.run_angle(-200, 60)
@@ -54,22 +59,25 @@ class Lidar:
             i = 0
             while i < 30:
 
-                map.append(UltraSonic.distance())
+                UltraMap.append(UltraSonic.distance())
 
                 #if lidar doesn't see anything
-                if map[i] == 2550:
-                    map[i] = 0
+                if UltraMap[i] == 2550:
+                    UltraMap[i] = 0
+
+                if self.DualMode == True:
+                    InfraredMap.append(Infrared.distance())
 
                 if self.Debug == True:
-                    ev3.screen.print(map[i])
+                    ev3.screen.print(str(UltraMap[i]) + " | " + str(InfraredMap[i]))
 
-                Motor.run_angle(30, 4)
+                Motor.run_angle(self.Speed, 4)
 
                 ev3.screen.clear()
 
                 i += 1
             
-            
+
             #end of cycle
             ev3.speaker.beep()
             wait(100)
@@ -79,11 +87,13 @@ class Lidar:
             Motor.run_angle(-200, 60)
 
 
-            
-            return map
+            if self.DualMode == True:
+                return UltraMap, InfraredMap
+            else:
+                return UltraMap
 
         
-    def printmap(self):
+    """def printmap(self):
 
         i = 0
         #drawing map
@@ -91,12 +101,46 @@ class Lidar:
         while i < 30:
             x = i * 6
 
-            y = 128 - (map[i] // 20)
+            y = 128 - (UltraMap[i] // 20)
 
             x2 = (i + 1) * 6
-            y2 = 128 - (map[i + 1] // 20)
+            y2 = 128 - (UltraMap[i + 1] // 20)
 
 
             ev3.screen.draw_line(x, y, x2, y2)
-            i = i + 1
+            i = i + 1"""
 
+
+
+class Tools:
+
+    def __init__(self, OptionalMap:list=None):
+        self.OptionalMap = OptionalMap
+
+    def find_longest_zeros(self, map):
+        leng = 0
+        start = 0
+        stop = 0
+
+        temp_start = -1
+        temp_stop = 0
+        temp_len = 0
+
+        
+        for idx, item in enumerate(map):
+            if item == 0:
+                if temp_start == -1:
+                    temp_start = idx
+                temp_len += 1
+            else:
+                if temp_start != -1:
+                    temp_stop = idx - 1
+                if leng < temp_len:
+                    leng = temp_len
+                    start = temp_start
+                    stop = temp_stop
+                temp_start = -1
+                temp_stop = 0
+                temp_len = 0
+
+        return start, stop
