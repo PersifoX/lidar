@@ -43,6 +43,6 @@
 [презентация](#)
 
 ### Все кто принимал в этом участие:
-[Valed](#)(Логистика)
-[Secondfox](https://persifox.space/)(Это я)
+[Valed](#)(Логистика)<br>
+[Secondfox](https://persifox.space/)(Это я)<br>
 [Sergey Ippolitov](https://github.com/i-sergh)(Наставник?)
