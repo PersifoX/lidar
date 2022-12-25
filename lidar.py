@@ -7,7 +7,9 @@ from pybricks.tools import wait, StopWatch, DataLog
 from pybricks.robotics import DriveBase
 from pybricks.media.ev3dev import SoundFile, ImageFile
 
-
+"""
+https://github.com/PersifoX/lidar
+"""
 
 # This program requires LEGO EV3 MicroPython v2.0 or higher.
 # Click "Open user guide" on the EV3 extension tab for more information.
@@ -19,20 +21,6 @@ ev3 = EV3Brick()
 UltraSonic = UltrasonicSensor(Port.S4)
 Infrared   = InfraredSensor(Port.S1)
 
-
-"""
-Если вы собрали все правильно, лидар будет возвращать массив с 30-ю элементами типа int
-от 0 (лидар не видит препятствия) до 2249 (~225 см) 
-
-Основной класс имеет 2 необязательных параметра:
-    -DualMode:
-        Следует ли лидару инициализировать сразу 2 датчика (Инфакрасный и Ультразвуковой)
-        (По умолчанию лидар использует только Ультразвуковой)
-    -Debug:
-        Выводить ли элементы массива на экран ev3 (поочередно)
-    -Speed:
-        Скорость вращения лидара, чем меньше - тем лучше стабилизация. По умолчанию 30.
-"""
 
 
 class Lidar:
@@ -48,7 +36,7 @@ class Lidar:
     def scan(self):
         while True:
 
-            #array of map
+            #array of maps
             UltraMap    = []
             InfraredMap = []
 
