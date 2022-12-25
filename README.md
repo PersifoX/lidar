@@ -1,6 +1,9 @@
-![](https://github.com/PersifoX/lidar/blob/main/READMEstatic/logo.png)
+<h1 align="center">
+<img src="https://github.com/PersifoX/lidar/blob/main/READMEstatic/logo.png" title="Lego lidar" alt="logo">
+<br><br>
+Lidar (Модифицировано до колесной базы)
+</h1><br>
 
-## Lidar (Модифицировано до колесной базы)
 #### Вид сбоку
 
 ![lidar](https://github.com/PersifoX/lidar/blob/main/READMEstatic/accb443b-1708-4169-b9df-2b96852cc43a.jfif)
@@ -22,7 +25,7 @@
 
 ## Tools
 ### имеет 1 функцию:
-> <code>find_longest_zeros</code> - возвращает... (что возвращает?)
+> <code>find_longest_zeros</code> - возвращает индекс элемента с возмоным пространством
 
 Параметры классов
 -----------------
