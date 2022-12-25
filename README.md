@@ -5,7 +5,7 @@
 
 #### Вид спереди
 
-![lidar](https://drive.google.com/file/d/1ZFobRuzp5E70ObsOIvftHbtQ8LKzM_KX/view?usp=sharing)
+![lidar](https://drive.google.com/file/d/1ZFobRuzp5E70ObsOIvftHbtQ8LKzM_KX)
 
 ### Если вы собрали все правильно, лидар будет возвращать массив с 30-ю элементами типа <code>int</code>
 ### от 0 (лидар не видит препятствия) до 2249 (~225 см) <br>
