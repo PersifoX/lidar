@@ -1,4 +1,4 @@
-[lego lidar](#)
+![](https://github.com/PersifoX/lidar/blob/main/READMEstatic/logo.png)
 
 ## Lidar (Модифицировано до колесной базы)
 #### Вид сбоку
