@@ -48,7 +48,7 @@ def find_center_zeros_ang(map):
 
     return ang
 
-#ev3.speaker.play_file("ricardo.wav")
+
 
 while True:
     map = lidar.scan()
