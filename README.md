@@ -1,7 +1,7 @@
 ## Lidar (Модифицировано до колесной базы)
 #### Вид сбоку
 
-![lidar](https://github.com/PersifoX/lidar/blob/main/accb443b-1708-4169-b9df-2b96852cc43a.jfif)
+![lidar](https://github.com/PersifoX/lidar/blob/main/READMEstatic/accb443b-1708-4169-b9df-2b96852cc43a.jfif)
 
 #### Вид спереди
 
